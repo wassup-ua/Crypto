@@ -19,5 +19,16 @@ while True:
 		user_num1 = input("Выбери номер: ")
 		if user_num1 == "1":
 			deal.deal_get()
+		elif user_num1 == "2":
+			deal.deal_show()
+		elif user_num1 == "3":
+			deal.deal_delete()
+		elif user_num1 == "0":
+			break
+			
+	elif user_number  == "0":
+			break
+
+
 
 				
