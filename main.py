@@ -21,9 +21,15 @@ while True:
 			if user_num1 == "1":
 				deal.deal_get()
 			elif user_num1 == "2":
-				deal.deal_show()
+				if len(deal.transactions) == 0:
+					print("У вас нет сделок ❌")
+				else:
+					deal.deal_show()
 			elif user_num1 == "3":
-				deal.deal_delete()
+				if len(deal.transactions) == 0:
+					print("У вас нет сделок ❌")
+				else:
+					deal.deal_delete()
 			elif user_num1 == "0":
 				break
 			else:
