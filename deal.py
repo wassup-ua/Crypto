@@ -37,7 +37,7 @@ def deal_get():
 		""")
 
 	trade = {
-		"data": date_deal,
+		"date": date_deal,
 		"coin": coin_name,
 		"p_l": pro_les,
 		"p_m": plus_minus,
@@ -75,6 +75,50 @@ def deal_delete():
 
 
 
+def statistics():
+	if len(transactions) == 0:
+		print("У вас нет сделок ❌")
+		return
+	else:
+		total_profit = 0
+		total_loss = 0
+		total_progit_loss = 0
+		profit_deal = 0
+		loss_deal = 0
+		max_profit_deal = {"p_l": 0}
+		max_loss_deal = {"p_l": 0}
+
+		for deal in transactions:
+			if deal["p_m"] == "+":
+				total_profit += deal["p_l"]
+				total_progit_loss += deal["p_l"]
+				profit_deal += 1
+				if deal["p_l"] > max_profit_deal["p_l"]:
+					max_profit_deal = deal
+			elif deal["p_m"] == "-":
+				total_loss += deal["p_l"]
+				total_progit_loss -= deal["p_l"]
+				loss_deal += 1
+				if deal["p_l"] > max_loss_deal["p_l"]:
+					max_loss_deal = deal
+	total_profit_loss = total_profit - total_loss
+	percent_profit_deal = (profit_deal / len(transactions)) * 100
+	print("📊Ваши сделки:")
+	print(f"Процент прибыльных: {percent_profit_deal}%")
+	print(f"Получилось заработать: {total_profit_loss} USDT.")
+
+	print(f"🟢Прибыльных сделок: {profit_deal}")
+	print(f"🟢Заработано на прибыльных сделках: {total_profit} USDT.")
+
+	print(f"🔴Убыточных сделок: {loss_deal}")
+	print(f"🔴Потерянно на убыточных сделках: {total_loss} USDT.")
+
+
+	if profit_deal > 0:
+		print(f"Самая прибыльная сделка: {max_profit_deal['date']} - COIN: {max_profit_deal['coin']}, {max_profit_deal['p_l']} USDT.")
+
+	if loss_deal > 0:
+		print(f"Самая убыточная сделка: {max_loss_deal['date']} - COIN: {max_loss_deal['coin']}, {max_loss_deal['p_l']} USDT.")
 
 
 
