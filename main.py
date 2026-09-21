@@ -1,8 +1,7 @@
 import deal
+import Save_Load
 
-
-
-
+Save_Load.load_data()
 while True:
     print("""
     [1]. Трейдинг
