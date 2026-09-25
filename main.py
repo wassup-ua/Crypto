@@ -13,8 +13,9 @@ while True:
             print("""
                 [1]. Добавить сделку
                 [2]. Смотреть сделки
-                [3]. Удалить сделку
-                [4]. Статистика
+                [3]. Изменить сделку
+                [4]. Удалить сделку
+                [5]. Статистика
                 [0]. Выйти
                 """)
             user_num1 = input("Выбери номер: ")
@@ -29,8 +30,13 @@ while True:
                 if len(deal.transactions) == 0:
                     print("У вас нет сделок ❌")
                 else:
-                    deal.deal_delete()
+                    deal.deal_edit()
             elif user_num1 == "4":
+                if len(deal.transactions) == 0:
+                    print("У вас нет сделок ❌")
+                else:
+                    deal.deal_delete()
+            elif user_num1 == "5":
                 deal.statistics()
 
             elif user_num1 == "0":
